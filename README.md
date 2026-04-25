@@ -6,7 +6,9 @@ This project is aimed at building a simulated trading environment, where I can b
 - Effects of inclusion of a basic market maker in a non-liquid market (in general, but more specifically, on execution metrics)
 - Various levers in market making strategy and their efficiency 
 
-#### Project phases
+### Project details
+
+#### Development phases
 
 i) Jupyter notebook: discrete time
 - Building of overarching market environment, including limit orderbook and analytics collection.
@@ -41,8 +43,28 @@ Market noise logic highlights:
 - Uses lognormal distribution to model order quantity for market orders in order to simulate occasional whale orders hitting the book.
 
 #### Next steps:
-- Bugfix MarketMaker module
+- Currently working on fixing bugs in the MarketMaker module
 - Analytics for execution metrics to quantify impact of live market maker operating on the exchange.
 - Build out further agents that execute varied strategies on the book.
 
- 
+### Readme:
+- Jupyter notebook (OB data simulation v1.5.ipynb): standalone simulation
+
+1) Install all the packages in the first cell of the notebook. Run first cell of the notebook to import them into workspace.
+2) Implementation of the OrderBook class is in cell 4. Implementation of MarketNoise class is in cell 6. Change parameters as desired in these cells (e.g. depth for top of book volume calculation, distribution of probabilities at which orders are sampled, distribution of quantity of orders etc.)
+3) Run cells that contain implementation of the classes (cells 2 - 7)
+4) Run the eighth cell to see async simulation with visualisation of mid trend.
+
+- Distributed ZeroMQ version
+1) Relevant files are:
+   - Models.py: Stores augmented logic for underlying architecture (Order, Order Queues, OrderBook, Analytics, MarketNoise classes)
+   - Exchange.py: File containing code that runs OrderBook class on ZeroMQ architecture
+   - MarketNoise.py: File containing code that runs MarketNoise class on ZeroMQ architecture
+   - Plotting.py: File that plots the live price trend for the order book based on published market snapshots
+   - Blotter.py: File that outputs live most recent executed orders and their relevant analytics
+
+2) Run Exchange.py to start up exchange
+3) Run Blotter.py and Plotting.py to visualise analytics
+4) Run MarketNoise.py to start the sending of orders
+5) Watch the order matching process unfold on the Blotter and Plotting screens
+
