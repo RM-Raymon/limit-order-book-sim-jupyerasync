@@ -1,9 +1,10 @@
 # Limit order book simulator
 
-This project is aimed at building a simulated trading environment, where I can build and test market making strategies in order to quantify:
+This project is aimed at building a simulated trading environment, where I can build and test market making strategies in order to explore and quantify:
 
-- Inclusion of a market maker vs without
-- The efficiency of various levers in market making strategy 
+- Different market making strategies
+- Effects of inclusion of a basic market maker in a non-liquid market (in general, but more specifically, on execution metrics)
+- Various levers in market making strategy and their efficiency 
 
 #### Project phases
 
