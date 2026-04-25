@@ -22,6 +22,8 @@ iii) Visual Studio Code: ZeroMQ distributed architecture
 - I ported the core engine from monolithic Jupyter environment to a modular implementation in VSC, utilising ZMQ to achieve true concurrency. The use of ZeroMQ bypasses the GIL by running the exchange and agents on different terminals in order to decouple their execution.
 - Messaging patterns implented include: 1) PUSH-PULL for high-throughput order routing and load balancing between execution agents and the matching engine. 2) PUB / SUB for real-time broadcasting of LOB snapshots and trade data, allowing multiple downstream analytics listeners to subscribe without impacting engine latency.
 - Several local ports were configured to manage the transmission of structured data, ensuring scalable communication backbone for the simulation.
+- Due to the nature of ZeroMQ not being on the same terminal, class objects (such as orders, market snapshot dictionaries) cannot be passed around directly. Therefore additional helper functions had to be coded to facilitate processing of order data (e.g. parsing of JSON order data and subsequent conversion into order class), and collection and output of data (e.g. execution confirmation, analytics collection, output as market snapshots).
+- Additionally, the responsibilities of the classes were reworked to more accurately reflect the relationship between a trader and the exchange (e.g. in the Jupyter version, the exchange owned the price sampling function which output a price for the MarketNoise to submit. In this distributed architecture version, the MarketNoise (and all future agents) have their own sampling functions which generates their order prices based on the latest market snapshots published by the exchange. 
 
 #### Technical specifics
 
