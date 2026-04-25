@@ -44,8 +44,9 @@ Market noise logic highlights:
 
 #### Next steps:
 - Currently working on fixing bugs in the MarketMaker module
-- Analytics for execution metrics to quantify impact of live market maker operating on the exchange.
-- Build out further agents that execute varied strategies on the book.
+- Analytics for execution metrics to quantify impact of live market maker operating on the exchange
+- Explore possibilties for further abstraction of logic (e.g. there is a lot of repeated code in limit order matching and market order matching. To explore if there is a way work around the minute differences to abstract the matching logic into an order matching helper function).
+- Build out further agents that execute varied strategies on the book
 
 ### Readme:
 - Jupyter notebook (OB data simulation v1.5.ipynb): standalone simulation
