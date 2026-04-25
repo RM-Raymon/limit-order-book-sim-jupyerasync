@@ -2,9 +2,9 @@
 
 This project is aimed at building a simulated trading environment, where I can build and test market making strategies in order to explore and quantify:
 
-- Different market making strategies
+- Different systematic market making strategies
 - Effects of inclusion of a basic market maker in a non-liquid market (in general, but more specifically, on execution metrics)
-- Various levers in market making strategy and their efficiency 
+- Various levers in systematic market making and their efficiency 
 
 ### Project details
 
